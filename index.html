@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Kanban Board</h1>
+
+<div class="controls">
+  <input id="taskInput" placeholder="Enter task">
+
+  <select id="priorityInput">
+    <option value="low">Low</option>
+    <option value="normal" selected>Normal</option>
+    <option value="high">High</option>
+  </select>
+
+  <input id="dueDateInput" type="date">
+  
+  <select id="labelInput">
+  <option value="">No Label</option>
+  <option value="Bug">Bug</option>
+  <option value="Feature">Feature</option>
+  <option value="Design">Design</option>
+  </select>
+
+  <button onclick="addTask()">Add</button>
+</div>
+
+<div class="controls">
+  <input id="searchInput" placeholder="Search tasks" oninput="loadTasks()">
+</div>
+
+<select id="sortInput" onchange="loadTasks()">
+  <option value="created">Sort by Created</option>
+  <option value="priority">Sort by Priority</option>
+  <option value="due_date">Sort by Due Date</option>
+</select>
+
+<div class="stats" id="stats">
+  <div class="stat-card">
+    <h3>Total Tasks</h3>
+    <p id="totalTasks">0</p>
+  </div>
+  <div class="stat-card">
+    <h3>Completed</h3>
+    <p id="completedTasks">0</p>
+  </div>
+  <div class="stat-card">
+    <h3>Overdue</h3>
+    <p id="overdueTasks">0</p>
+  </div>
+</div>
+
+<div class="board">
+  <div class="column" id="todo">
+    <h2>To Do</h2>
+  </div>
+
+  <div class="column" id="in_progress">
+    <h2>In Progress</h2>
+  </div>
+
+  <div class="column" id="in_review">
+    <h2>In Review</h2>
+  </div>
+
+  <div class="column" id="done">
+    <h2>Done</h2>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
